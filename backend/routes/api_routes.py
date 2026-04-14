@@ -1,5 +1,4 @@
 from fastapi import APIRouter, HTTPException, BackgroundTasks
-<<<<<<< HEAD
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from typing import List, Dict, Any, Optional
@@ -18,18 +17,6 @@ db           = SupabaseDB()
 
 
 # ── Request Models ────────────────────────────────────────────────────────────
-=======
-from pydantic import BaseModel
-from typing import List, Dict, Any, Optional
-from orchestrator.orchestrator import Orchestrator
-from services.synthesis_service import synthesize_papers
-from database.supabase_client import SupabaseDB
-
-router = APIRouter()
-orchestrator = Orchestrator()
-db = SupabaseDB()
-
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
 class SearchRequest(BaseModel):
     query: str
     session_name: Optional[str] = None
@@ -42,7 +29,6 @@ class CitationRequest(BaseModel):
     format: str = 'txt'
     style: str = 'APA'
 
-<<<<<<< HEAD
 class RoadmapRequest(BaseModel):
     session_id: Optional[str] = None
     papers: List[Dict[str, Any]] = []
@@ -53,21 +39,12 @@ class RoadmapRequest(BaseModel):
 
 
 # ── Existing Routes ───────────────────────────────────────────────────────────
-=======
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
 @router.post("/search")
 async def search(req: SearchRequest):
     try:
         result = orchestrator.execute_search_workflow(req.query)
-<<<<<<< HEAD
 
         if req.session_name:
-=======
-        
-        # Save to DB if requested
-        if req.session_name:
-            # We skip DB insertion errors if no keys provided yet, just warn
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
             try:
                 session_res = db.save_session(req.session_name, req.query)
                 if session_res and session_res.data:
@@ -83,7 +60,6 @@ async def search(req: SearchRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-<<<<<<< HEAD
 
 @router.post("/synthesize")
 async def synthesize(req: SynthesisRequest):
@@ -95,24 +71,6 @@ async def synthesize(req: SynthesisRequest):
 
         print("Synthesis Agent Invoked")
         synthesis_text = synthesize_papers(req.papers)
-=======
-@router.post("/synthesize")
-async def synthesize(req: SynthesisRequest):
-    """
-    POST /synthesize
-    Directly calls the Groq-powered synthesis service.
-    """
-    print(f"DEBUG: /synthesize endpoint hit with {len(req.papers)} papers")
-    try:
-        # Orchestrator requirements: Only call Synthesis Agent if selected papers >= 2
-        if len(req.papers) < 2:
-            return {"result": "Please select at least 2 papers for synthesis."}
-
-        print("Synthesis Agent Invoked") # Requested log
-        synthesis_text = synthesize_papers(req.papers)
-        
-        # Return: { result: synthesisText } AND { synthesis: synthesisText } for frontend compatibility
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
         return {
             "result": synthesis_text,
             "synthesis": synthesis_text
@@ -120,10 +78,7 @@ async def synthesize(req: SynthesisRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
 @router.post("/cite")
 async def cite(req: CitationRequest):
     try:
@@ -132,10 +87,7 @@ async def cite(req: CitationRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
 @router.get("/sessions")
 async def get_sessions():
     try:
@@ -144,10 +96,7 @@ async def get_sessions():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
 @router.get("/sessions/{session_id}")
 async def get_session_details(session_id: str):
     try:
@@ -155,10 +104,7 @@ async def get_session_details(session_id: str):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
 @router.delete("/sessions/{session_id}")
 async def delete_session(session_id: str):
     try:
@@ -166,7 +112,6 @@ async def delete_session(session_id: str):
         return {"status": "success", "message": "Session deleted"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-<<<<<<< HEAD
 
 
 # ── Feature 1: Export PDF ─────────────────────────────────────────────────────
@@ -260,5 +205,3 @@ async def get_roadmap(session_id: str):
         raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-=======
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c

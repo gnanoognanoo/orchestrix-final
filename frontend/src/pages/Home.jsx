@@ -1,18 +1,10 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
 import { Search, Download, FileText, Save, BrainCircuit, AlertCircle, Map, Sparkles, BookOpen, Lightbulb, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AgentStatusTimeline from '../components/AgentStatusTimeline';
 import PaperCard from '../components/PaperCard';
 import { TrendChart, KeywordChart } from '../components/Charts';
 import { searchPapers, synthesizePapers, citePapers, generateRoadmap } from '../services/api';
-=======
-import { Search, Download, FileText, Save, BrainCircuit, AlertCircle } from 'lucide-react';
-import AgentStatusTimeline from '../components/AgentStatusTimeline';
-import PaperCard from '../components/PaperCard';
-import { TrendChart, KeywordChart } from '../components/Charts';
-import { searchPapers, synthesizePapers, citePapers } from '../services/api';
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
 
 const Home = () => {
   const [query, setQuery] = useState('');
@@ -24,15 +16,10 @@ const Home = () => {
   
   const [synthesisState, setSynthesisState] = useState({ loading: false, data: null });
   const [citationState, setCitationState] = useState({ loading: false, data: null, format: 'txt', style: 'APA' });
-<<<<<<< HEAD
   const [roadmapState, setRoadmapState] = useState({ loading: false, data: null });
   const [error, setError] = useState(null);
 
 
-=======
-  const [error, setError] = useState(null);
-
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
   const handleSearch = async (e) => {
     e.preventDefault();
     if (!query.trim()) return;
@@ -43,11 +30,8 @@ const Home = () => {
     setSelectedPapers([]);
     setSynthesisState({ loading: false, data: null });
     setCitationState({ loading: false, data: null, ...citationState });
-<<<<<<< HEAD
     setRoadmapState({ loading: false, data: null });
 
-=======
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
 
     try {
       const data = await searchPapers(query, sessionName || undefined);
@@ -122,7 +106,6 @@ const Home = () => {
     URL.revokeObjectURL(url);
   };
 
-<<<<<<< HEAD
   const handleGenerateRoadmap = async () => {
     if (!results || !results.papers) return;
     setRoadmapState({ ...roadmapState, loading: true });
@@ -170,25 +153,15 @@ const Home = () => {
       transition={{ duration: 0.8, ease: "easeOut" }} 
       className="container mx-auto px-4 py-8"
     >
-=======
-  return (
-    <div className="container mx-auto px-4 py-8">
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
       
       {/* Search Header section */}
       <div className="text-center mb-12">
         <h1 className="text-5xl font-bold mb-4 tracking-tight"><span className="gradient-text">Orchestrix</span> Intelligence</h1>
         <p className="text-gray-400 max-w-2xl mx-auto text-lg">Multi-agent architecture for automated academic discovery, analysis, and synthesis.</p>
         
-<<<<<<< HEAD
         <form id="search-form" onSubmit={handleSearch} className="mt-8 max-w-3xl mx-auto relative group">
           <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full blur opacity-25 group-hover:opacity-40 transition-opacity"></div>
           <div className="relative glass-panel rounded-full flex items-center p-2 pl-6 transition-all duration-300 focus-within:glow-shadow focus-within:border-secondary/50">
-=======
-        <form onSubmit={handleSearch} className="mt-8 max-w-3xl mx-auto relative group">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full blur opacity-25 group-hover:opacity-40 transition-opacity"></div>
-          <div className="relative glass-panel rounded-full flex items-center p-2 pl-6">
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
             <Search className="w-6 h-6 text-gray-400" />
             <input 
               type="text"
@@ -207,21 +180,14 @@ const Home = () => {
             <button 
               type="submit" 
               disabled={isSearching}
-<<<<<<< HEAD
               className="shiny-btn bg-primary hover:bg-primary/90 transition-all duration-300 text-white rounded-full px-8 py-3 font-medium flex items-center gap-2 hover:scale-105 active:scale-95 disabled:opacity-50 hover:shadow-[0_0_20px_rgba(107,70,193,0.5)] border border-white/10"
             >
               {isSearching ? <span className="flex gap-1 items-center"><span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce"></span><span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></span><span className="w-1.5 h-1.5 bg-white rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></span></span> : 'Research'}
-=======
-              className="bg-primary hover:bg-primary/80 transition-colors text-white rounded-full px-6 py-3 font-medium flex items-center gap-2"
-            >
-              {isSearching ? <span className="animate-pulse">Orchestrating...</span> : 'Research'}
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
             </button>
           </div>
         </form>
       </div>
 
-<<<<<<< HEAD
       {/* Loading Skeleton */}
       {isSearching && !results && (
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl mx-auto mb-12">
@@ -302,9 +268,6 @@ const Home = () => {
 
       {error && (
 
-=======
-      {error && (
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
         <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-xl flex items-center justify-center gap-3 mb-8">
           <AlertCircle /> {error}
         </div>
@@ -312,7 +275,6 @@ const Home = () => {
 
       {/* Results View */}
       {results && (
-<<<<<<< HEAD
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 space-y-12">
           
           <div className="mb-4 hover:glow-shadow transition-shadow duration-500 rounded-xl">
@@ -468,67 +430,6 @@ const Home = () => {
                   <div className="flex-1 p-5 bg-white/5 border border-white/10 rounded-xl overflow-y-auto m-1 h-64 lg:h-auto">
                     <div className="prose prose-invert prose-sm">
                       <div className="whitespace-pre-wrap text-gray-300 leading-relaxed">
-=======
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <AgentStatusTimeline trace={results.trace} />
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            
-            {/* Left Column: Papers List */}
-            <div className="lg:col-span-2 space-y-4">
-              <div className="flex justify-between items-end mb-4">
-                <h3 className="text-2xl font-semibold">Discovered Papers <span className="text-lg text-primary bg-primary/10 px-2 py-1 rounded-md">{results.papers?.length || 0}</span></h3>
-              </div>
-              
-              <div className="space-y-4 h-[800px] overflow-y-auto pr-2 pb-10">
-                {results.papers && results.papers.map((paper, idx) => (
-                  <PaperCard 
-                    key={paper.id || idx} 
-                    paper={paper} 
-                    selected={selectedPapers.some(p => p.id === paper.id)}
-                    onSelect={togglePaperSelection}
-                  />
-                ))}
-                {results.papers?.length === 0 && (
-                  <div className="text-center p-10 glass-panel">
-                    <p className="text-gray-400">No papers found for this query.</p>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Right Column: Analysis, Synthesis, Citation */}
-            <div className="space-y-8">
-              
-              {/* Analysis Charts */}
-              {results.analysis && Object.keys(results.analysis).length > 0 && (
-                <div className="space-y-4">
-                  <TrendChart data={results.analysis.publication_trend} />
-                  <KeywordChart data={results.analysis.keyword_frequency} />
-                </div>
-              )}
-
-              {/* Synthesis Panel */}
-              <div className="glass-panel p-5">
-                <h3 className="text-xl font-semibold flex items-center gap-2 mb-4">
-                  <BrainCircuit className="text-secondary" />
-                  Synthesis Agent
-                </h3>
-                <p className="text-sm text-gray-400 mb-4">Select papers from the list to synthesize their findings, contradictions, and gaps.</p>
-                
-                <button 
-                  onClick={handleSynthesize}
-                  disabled={selectedPapers.length === 0 || synthesisState.loading}
-                  className="w-full bg-secondary/10 hover:bg-secondary/20 text-secondary border border-secondary/30 rounded-lg py-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {synthesisState.loading ? 'Synthesizing...' : `Synthesize Selected (${selectedPapers.length})`}
-                </button>
-
-                {synthesisState.data && typeof synthesisState.data === 'string' && (
-                  <div className="mt-4 p-4 bg-white/5 border border-white/10 rounded-lg max-h-[500px] overflow-y-auto">
-                    <div className="prose prose-invert prose-sm">
-                      <div className="whitespace-pre-wrap text-gray-300 font-sans leading-relaxed">
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
                         {synthesisState.data}
                       </div>
                     </div>
@@ -536,7 +437,6 @@ const Home = () => {
                 )}
 
                 {synthesisState.data && typeof synthesisState.data === 'object' && !synthesisState.data.error && (
-<<<<<<< HEAD
                   <div className="flex-1 space-y-4 text-sm overflow-y-auto pr-2 m-1 h-64 lg:h-auto">
                     {synthesisState.data.common_themes && (
                       <div className="bg-white/5 p-4 rounded-xl border border-white/10 shadow-inner">
@@ -554,40 +454,16 @@ const Home = () => {
                       <div className="bg-white/5 p-4 rounded-xl border border-white/10 shadow-inner">
                         <strong className="text-red-400 block mb-2 uppercase tracking-wider text-xs">Research Gaps</strong>
                         <p className="text-gray-300 leading-relaxed">{synthesisState.data.research_gaps}</p>
-=======
-                  <div className="mt-4 space-y-3 text-sm">
-                    {synthesisState.data.common_themes && (
-                      <div className="bg-white/5 p-3 rounded border border-white/10">
-                        <strong className="text-white block mb-1">Common Themes</strong>
-                        <p className="text-gray-300">{synthesisState.data.common_themes}</p>
-                      </div>
-                    )}
-                    {synthesisState.data.contradictions && (
-                      <div className="bg-white/5 p-3 rounded border border-white/10">
-                        <strong className="text-white block mb-1">Contradictions</strong>
-                        <p className="text-gray-300">{synthesisState.data.contradictions}</p>
-                      </div>
-                    )}
-                    {synthesisState.data.research_gaps && (
-                      <div className="bg-white/5 p-3 rounded border border-white/10">
-                        <strong className="text-white block mb-1">Research Gaps</strong>
-                        <p className="text-gray-300">{synthesisState.data.research_gaps}</p>
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
                       </div>
                     )}
                   </div>
                 )}
                 {synthesisState.data?.error && (
-<<<<<<< HEAD
                   <div className="text-red-400 text-sm p-4 bg-red-400/5 border border-red-400/20 rounded-xl m-1">
-=======
-                  <div className="mt-4 text-red-400 text-sm p-3 bg-red-400/5 border border-red-400/20 rounded-md">
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
                     {synthesisState.data.error}
                   </div>
                 )}
               </div>
-<<<<<<< HEAD
             </div>
 
           </div>
@@ -685,66 +561,6 @@ const Home = () => {
         </div>
       )}
     </motion.div>
-=======
-
-              {/* Citation Panel */}
-              <div className="glass-panel p-5">
-                <h3 className="text-xl font-semibold flex items-center gap-2 mb-4">
-                  <FileText className="text-amber-400" />
-                  Citation Agent
-                </h3>
-                
-                <div className="flex gap-2 mb-4">
-                  <select 
-                    className="bg-panel border border-white/10 rounded px-2 py-1 text-sm outline-none w-1/2"
-                    value={citationState.style}
-                    onChange={(e) => setCitationState({...citationState, style: e.target.value})}
-                  >
-                    <option value="APA">APA Style</option>
-                    <option value="IEEE">IEEE Style</option>
-                    <option value="MLA">MLA Style</option>
-                  </select>
-                  <select 
-                    className="bg-panel border border-white/10 rounded px-2 py-1 text-sm outline-none w-1/2"
-                    value={citationState.format}
-                    onChange={(e) => setCitationState({...citationState, format: e.target.value})}
-                  >
-                    <option value="txt">Text (.txt)</option>
-                    <option value="bib">BibTeX (.bib)</option>
-                  </select>
-                </div>
-
-                <div className="flex gap-2">
-                  <button 
-                    onClick={handleCite}
-                    disabled={selectedPapers.length === 0 || citationState.loading}
-                    className="flex-1 bg-amber-400/10 hover:bg-amber-400/20 text-amber-400 border border-amber-400/30 rounded-lg py-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {citationState.loading ? 'Generating...' : 'Generate Citations'}
-                  </button>
-                  <button 
-                    onClick={downloadCitations}
-                    disabled={!citationState.data}
-                    className="glass-button px-3 disabled:opacity-50"
-                    title="Download Citations"
-                  >
-                    <Download className="w-4 h-4" />
-                  </button>
-                </div>
-                
-                {citationState.data && typeof citationState.data === 'string' && (
-                  <div className="mt-4 bg-black/40 border border-white/5 rounded p-3 text-xs text-gray-400 h-32 overflow-y-auto whitespace-pre-wrap font-mono">
-                    {citationState.data}
-                  </div>
-                )}
-              </div>
-
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
   );
 };
 

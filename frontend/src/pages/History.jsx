@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getSessions, deleteSession } from '../services/api';
 import { useNavigate } from 'react-router-dom';
-<<<<<<< HEAD
 import { Trash2, Database, ExternalLink, Calendar, Search, Loader2, Download, Share2 } from 'lucide-react';
-=======
-import { Trash2, Database, ExternalLink, Calendar, Search, Loader2 } from 'lucide-react';
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
 import { motion, AnimatePresence } from 'framer-motion';
 
 const History = () => {
@@ -40,7 +36,6 @@ const History = () => {
     }
   };
 
-<<<<<<< HEAD
   const handleExportPdf = async (sessionId, name) => {
     try {
       console.log(`Exporting PDF for session: ${sessionId}`);
@@ -72,8 +67,6 @@ const History = () => {
   };
 
 
-=======
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
   return (
     <div className="container mx-auto p-8 max-w-6xl">
       <div className="mb-10 text-center">
@@ -133,7 +126,6 @@ const History = () => {
                   </div>
                 </div>
 
-<<<<<<< HEAD
                 <div className="mt-4 pt-4 border-t border-white/10 flex justify-between items-center">
                   <div className="flex gap-2">
                     <button 
@@ -151,9 +143,6 @@ const History = () => {
                       <Share2 className="w-4 h-4" />
                     </button>
                   </div>
-=======
-                <div className="mt-4 pt-4 border-t border-white/10 flex justify-end">
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
                   <button onClick={() => navigate(`/history/${session.id}`)} className="text-xs tracking-wider uppercase font-semibold text-primary hover:text-white transition-colors flex items-center gap-1 group-hover:underline">
                     View Details <ExternalLink className="w-3 h-3" />
                   </button>

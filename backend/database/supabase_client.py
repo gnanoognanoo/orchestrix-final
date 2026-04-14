@@ -85,7 +85,6 @@ class SupabaseDB:
     def delete_session(self, session_id: str):
         if not self.client: return None
         return self.client.table("sessions").delete().eq("id", session_id).execute()
-<<<<<<< HEAD
 
     def get_session_meta(self, session_id: str) -> dict:
         """Return session_name and query for a given session_id."""
@@ -112,5 +111,3 @@ class SupabaseDB:
         if result.data:
             return result.data[0]
         return None
-=======
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c

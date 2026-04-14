@@ -5,11 +5,7 @@ import { CheckCircle2, CircleDashed, Loader2, PlayCircle, Layers, AlertTriangle,
 const AgentStatusTimeline = ({ trace = [] }) => {
   const getIcon = (status) => {
     const s = status.toLowerCase();
-<<<<<<< HEAD
     if (s.includes('completed') || s.includes('analyzed') || s.includes('merged') || s.includes('deduplicated') || s.includes('original:')) return <CheckCircle2 className="w-5 h-5 text-success" />;
-=======
-    if (s.includes('completed') || s.includes('analyzed')) return <CheckCircle2 className="w-5 h-5 text-success" />;
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
     if (s.includes('running') || s.includes('generating')) return <Loader2 className="w-5 h-5 text-secondary animate-spin" />;
     if (s.includes('chunk')) return <Layers className="w-5 h-5 text-amber-400" />;
     if (s.includes('failed')) return <AlertTriangle className="w-5 h-5 text-red-500" />;
@@ -19,15 +15,9 @@ const AgentStatusTimeline = ({ trace = [] }) => {
 
   const getBorderColor = (status) => {
     const s = status.toLowerCase();
-<<<<<<< HEAD
     if (s.includes('completed') || s.includes('analyzed') || s.includes('merged') || s.includes('deduplicated') || s.includes('original:')) return 'border-success shadow-[0_0_15px_rgba(16,185,129,0.3)]';
     if (s.includes('running') || s.includes('generating')) return 'border-secondary shadow-[0_0_15px_rgba(0,229,255,0.4)] animate-pulse-glow';
     if (s.includes('chunk')) return 'border-amber-400 shadow-[0_0_15px_rgba(251,191,36,0.4)] animate-pulse';
-=======
-    if (s.includes('completed') || s.includes('analyzed')) return 'border-success shadow-[0_0_15px_rgba(16,185,129,0.3)]';
-    if (s.includes('running') || s.includes('generating')) return 'border-secondary shadow-[0_0_15px_rgba(0,229,255,0.4)]';
-    if (s.includes('chunk')) return 'border-amber-400 shadow-[0_0_15px_rgba(251,191,36,0.4)]';
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
     if (s.includes('failed')) return 'border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.4)]';
     if (s.includes('cache')) return 'border-blue-400 shadow-[0_0_15px_rgba(96,165,250,0.4)]';
     return 'border-gray-600';

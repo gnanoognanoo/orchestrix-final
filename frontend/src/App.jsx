@@ -5,11 +5,8 @@ import History from './pages/History';
 import SessionDetail from './pages/SessionDetail';
 import Compare from './pages/Compare';
 import { Database, LayoutDashboard, GitCompare } from 'lucide-react';
-<<<<<<< HEAD
 import BackgroundBlobs from './components/BackgroundBlobs';
 import WildEffects from './components/WildEffects';
-=======
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
 
 const Navbar = () => (
   <nav className="glass-panel mx-4 mt-4 px-6 py-4 flex justify-between items-center z-50 relative sticky top-4">
@@ -37,24 +34,12 @@ const App = () => {
   return (
     <Router>
       <div className="min-h-screen bg-background relative selection:bg-primary/30">
-<<<<<<< HEAD
         <BackgroundBlobs />
         <WildEffects />
 
         <Navbar />
         
         <main className="pt-8 pb-16 relative z-10">
-=======
-        {/* Background visual effects */}
-        <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10">
-          <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-primary/10 rounded-full blur-[120px] mix-blend-screen transform translate-x-1/3 -translate-y-1/3"></div>
-          <div className="absolute bottom-0 left-0 w-[40vw] h-[40vw] bg-secondary/10 rounded-full blur-[100px] mix-blend-screen transform -translate-x-1/3 translate-y-1/3"></div>
-        </div>
-
-        <Navbar />
-        
-        <main className="pt-8 pb-16">
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/history" element={<History />} />

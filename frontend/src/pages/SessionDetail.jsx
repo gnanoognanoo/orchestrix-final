@@ -2,36 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getSessionDetails } from '../services/api';
 import { TrendChart, KeywordChart } from '../components/Charts';
-<<<<<<< HEAD
 import { ArrowLeft, FileText, Users, Calendar, ExternalLink, BookOpen, Star, Loader2, Map, Lightbulb, AlertCircle, Sparkles, Zap } from 'lucide-react';
-=======
-import { ArrowLeft, FileText, Users, Calendar, ExternalLink, BookOpen, Star, Loader2 } from 'lucide-react';
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
 import { motion } from 'framer-motion';
 
 const SessionDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [detail, setDetail] = useState(null);
-<<<<<<< HEAD
   const [roadmap, setRoadmap] = useState(null);
   const [loading, setLoading] = useState(true);
   const [generatingRoadmap, setGeneratingRoadmap] = useState(false);
   const [error, setError] = useState(null);
 
 
-=======
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
   useEffect(() => {
     const fetchDetail = async () => {
       setLoading(true);
       try {
         const data = await getSessionDetails(id);
         setDetail(data);
-<<<<<<< HEAD
         
         // Fetch existing roadmap if possible
         const { getRoadmap } = await import('../services/api');
@@ -39,9 +28,6 @@ const SessionDetail = () => {
         setRoadmap(roadmapData);
       } catch (err) {
         console.error(err);
-=======
-      } catch (err) {
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
         setError('Failed to load session details.');
       } finally {
         setLoading(false);
@@ -50,7 +36,6 @@ const SessionDetail = () => {
     fetchDetail();
   }, [id]);
 
-<<<<<<< HEAD
   const handleGenerateRoadmap = async () => {
     if (!detail) return;
     setGeneratingRoadmap(true);
@@ -74,8 +59,6 @@ const SessionDetail = () => {
   };
 
 
-=======
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
   if (loading) return (
     <div className="flex flex-col items-center justify-center py-32 text-secondary">
       <Loader2 className="w-12 h-12 animate-spin mb-4" />
@@ -118,7 +101,6 @@ const SessionDetail = () => {
         </div>
       )}
 
-<<<<<<< HEAD
       {/* Roadmap Section */}
       <div className="mb-10">
         {!roadmap ? (
@@ -189,8 +171,6 @@ const SessionDetail = () => {
       </div>
 
 
-=======
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
       {/* Papers List */}
       {papers.length === 0 ? (
         <div className="glass-panel p-16 text-center">

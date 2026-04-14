@@ -4,9 +4,6 @@ supabase
 requests
 pandas
 google-genai
-<<<<<<< HEAD
 groq
 reportlab
 python-dotenv
-=======
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c

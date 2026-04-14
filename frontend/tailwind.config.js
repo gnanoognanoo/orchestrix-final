@@ -16,7 +16,6 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-<<<<<<< HEAD
       },
       animation: {
         'gradient-x': 'gradient-x 4s ease infinite',
@@ -42,8 +41,6 @@ export default {
           '0%': { transform: 'translateX(-150%) skewX(-25deg)' },
           '100%': { transform: 'translateX(250%) skewX(-25deg)' }
         }
-=======
->>>>>>> 640c17c1398701ade703e6ed1c05bfbbe0d5bd2c
       }
     },
   },
